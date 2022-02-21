@@ -14,6 +14,7 @@
 		86B1909327C3A62E00860339 /* FiveDayWeatherTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86B1909227C3A62E00860339 /* FiveDayWeatherTests.swift */; };
 		86B190A027C3A64000860339 /* FiveDayWeatherUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86B1909F27C3A64000860339 /* FiveDayWeatherUITests.swift */; };
 		86B190A227C3A64000860339 /* FiveDayWeatherUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86B190A127C3A64000860339 /* FiveDayWeatherUITestsLaunchTests.swift */; };
+		86B190AA27C3B11B00860339 /* WeatherData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86B190A927C3B11B00860339 /* WeatherData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +45,7 @@
 		86B1909D27C3A63F00860339 /* FiveDayWeatherUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FiveDayWeatherUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		86B1909F27C3A64000860339 /* FiveDayWeatherUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiveDayWeatherUITests.swift; sourceTree = "<group>"; };
 		86B190A127C3A64000860339 /* FiveDayWeatherUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiveDayWeatherUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		86B190A927C3B11B00860339 /* WeatherData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +96,7 @@
 		86B1907D27C3A5FF00860339 /* FiveDayWeather */ = {
 			isa = PBXGroup;
 			children = (
+				86B190A827C3B10400860339 /* Model */,
 				86B1907E27C3A5FF00860339 /* FiveDayWeatherApp.swift */,
 				86B1908027C3A5FF00860339 /* ContentView.swift */,
 				86B1908227C3A60200860339 /* Assets.xcassets */,
@@ -125,6 +128,14 @@
 				86B190A127C3A64000860339 /* FiveDayWeatherUITestsLaunchTests.swift */,
 			);
 			path = FiveDayWeatherUITests;
+			sourceTree = "<group>";
+		};
+		86B190A827C3B10400860339 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				86B190A927C3B11B00860339 /* WeatherData.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -258,6 +269,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				86B1908127C3A5FF00860339 /* ContentView.swift in Sources */,
+				86B190AA27C3B11B00860339 /* WeatherData.swift in Sources */,
 				86B1907F27C3A5FF00860339 /* FiveDayWeatherApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
