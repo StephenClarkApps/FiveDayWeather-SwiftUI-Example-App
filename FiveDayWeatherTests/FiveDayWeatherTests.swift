@@ -6,6 +6,7 @@
 //
 
 import XCTest
+import Combine
 
 @testable import FiveDayWeather
 
@@ -31,6 +32,28 @@ class FiveDayWeatherTests: XCTestCase {
         XCTAssertTrue(weatherData?.list[1].sys.partOfDay == .night)
         XCTAssertTrue(weatherData?.list[0].main.temp == 9.07)
          
+    }
+    
+    func testYetAnother() throws {
+        
+        let expectation = XCTestExpectation(description: "Get weather data from test api call")
+
+        var observer: AnyCancellable?
+        
+        observer = APICaller.sharedInstance.fetchWeather().sink(receiveCompletion: { completion in
+            switch completion {
+            case .finished:
+                print("fishished")
+            case .failure(let error):
+                print(error)
+            }
+        }, receiveValue: { [weak self] value in
+            XCTAssertNotNil(value.city.name)
+            print(value.city.name)
+            expectation.fulfill()
+        })
+        
+        wait(for: [expectation], timeout: 10.0)
     }
 
     func testPerformanceExample() throws {

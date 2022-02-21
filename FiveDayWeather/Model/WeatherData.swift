@@ -5,11 +5,6 @@
 //  Created by Stephen Clark on 21/02/2022.
 //
 
-// This file was generated from JSON Schema using quicktype, do not modify it directly.
-// To parse the JSON, add this file to your project and do:
-//
-//   let weatherData = try? newJSONDecoder().decode(WeatherData.self, from: jsonData)
-
 import Foundation
 
 // MARK: - WeatherData
