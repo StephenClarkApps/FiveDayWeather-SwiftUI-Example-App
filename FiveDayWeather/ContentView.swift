@@ -7,7 +7,12 @@
 
 import SwiftUI
 
+
+
 struct ContentView: View {
+    init() {
+        WeatherDataViewModel().testParseWeatherData()
+    }
     var body: some View {
         Text("Hello, world!")
             .padding()

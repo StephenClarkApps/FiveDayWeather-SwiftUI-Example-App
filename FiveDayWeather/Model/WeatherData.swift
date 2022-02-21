@@ -14,16 +14,16 @@ import Foundation
 
 // MARK: - WeatherData
 struct WeatherData: Codable {
-    let cod: String
-    let message: Int
-    let cnt: Int
+    let cod: String // Internal parameter
+    let message: Int //  Internal parameter
+    let timeStampsReturned: Int 
     let list: [List]
     let city: City
 
     enum CodingKeys: String, CodingKey {
         case cod = "cod"
         case message = "message"
-        case cnt = "cnt"
+        case timeStampsReturned = "cnt"
         case list = "list"
         case city = "city"
     }
@@ -65,7 +65,7 @@ struct Coord: Codable {
 
 // MARK: - List
 struct List: Codable {
-    let dt: Int
+    let dt: Int // Time of data forecasted, unix, UTC
     let main: MainClass
     let weather: [Weather]
     let clouds: Clouds
