@@ -107,11 +107,11 @@ struct MainClass: Codable {
     let feelsLike: Double
     let tempMin: Double
     let tempMax: Double
-    let pressure: Int
-    let seaLevel: Int
-    let grndLevel: Int
-    let humidity: Int
-    let tempKf: Double
+    let pressure: Int // Atmospheric pressure on the sea level by default, hPa
+    let seaLevel: Int // Atmospheric pressure on the sea level, hPa
+    let grndLevel: Int //  Atmospheric pressure on the ground level, hPa
+    let humidity: Int // Humidity, %
+    let tempKf: Double //  Internal parameter
 
     enum CodingKeys: String, CodingKey {
         case temp = "temp"
