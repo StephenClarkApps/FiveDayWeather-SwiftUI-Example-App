@@ -128,33 +128,33 @@ struct MainClass: Codable {
 
 // MARK: - Rain
 struct Rain: Codable {
-    let the3H: Double
+    let mmVolumeOfRainInLastThreeHours: Double
 
     enum CodingKeys: String, CodingKey {
-        case the3H = "3h"
+        case mmVolumeOfRainInLastThreeHours = "3h"
     }
 }
 
 // MARK: - Sys
 struct Sys: Codable {
-    let pod: Pod
+    let partOfDay: PartOfDay // Part of the day (n - night, d - day)
 
     enum CodingKeys: String, CodingKey {
-        case pod = "pod"
+        case partOfDay = "pod"
     }
 }
 
-enum Pod: String, Codable {
-    case d = "d"
-    case n = "n"
+enum PartOfDay: String, Codable {
+    case day = "d"
+    case night = "n"
 }
 
 // MARK: - Weather
 struct Weather: Codable {
     let id: Int
-    let main: MainEnum
-    let weatherDescription: String
-    let icon: String
+    let main: MainConditionsEnum  // Group of weather parameters (Rain, Snow, Extreme etc.)
+    let weatherDescription: String // Weather condition within the group.
+    let icon: String // Weather icon id
 
     enum CodingKeys: String, CodingKey {
         case id = "id"
@@ -164,11 +164,23 @@ struct Weather: Codable {
     }
 }
 
-enum MainEnum: String, Codable {
+// https://openweathermap.org/weather-conditions#Weather-Condition-Codes-2
+enum MainConditionsEnum: String, Codable {
+    case thunderstorm = "Thunderstorm" // icon code 11d
+    case drizzle = "Drizzle"           //  09d
+    case rain = "Rain"                 // 10d 
+    case snow = "Snow"
+    case mist = "Mist"
+    case smoke = "Smoke"
+    case haze = "Haze"
+    case dust = "Dust"
+    case fog = "Fog"
+    case sand = "Sand"
+    case ash = "Ash"
+    case squall = "squall"
+    case tornado = "Tornado"
     case clear = "Clear"
     case clouds = "Clouds"
-    case rain = "Rain"
-    case snow = "Snow"
 }
 
 // MARK: - Wind
