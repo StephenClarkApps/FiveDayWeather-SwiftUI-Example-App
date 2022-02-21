@@ -7,6 +7,7 @@
 
 import Foundation
 
-class WeatherDataViewModel {
+class WeatherDataViewModel: ObservableObject {
 
+    @Published var city: String = ""
 }

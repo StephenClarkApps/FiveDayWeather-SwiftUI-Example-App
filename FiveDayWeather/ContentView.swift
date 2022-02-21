@@ -7,9 +7,9 @@
 
 import SwiftUI
 
-
-
 struct ContentView: View {
+    
+    @StateObject var model: WeatherDataViewModel = WeatherDataViewModel()
 
     var body: some View {
         Text("Hello, world!")
