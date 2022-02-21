@@ -15,8 +15,8 @@
 		86B190A027C3A64000860339 /* FiveDayWeatherUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86B1909F27C3A64000860339 /* FiveDayWeatherUITests.swift */; };
 		86B190A227C3A64000860339 /* FiveDayWeatherUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86B190A127C3A64000860339 /* FiveDayWeatherUITestsLaunchTests.swift */; };
 		86B190AA27C3B11B00860339 /* WeatherData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86B190A927C3B11B00860339 /* WeatherData.swift */; };
-		86B190AC27C3B62300860339 /* TestWeather.json in Resources */ = {isa = PBXBuildFile; fileRef = 86B190AB27C3B62300860339 /* TestWeather.json */; };
 		86B190AE27C3B7CD00860339 /* WeatherDataViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86B190AD27C3B7CD00860339 /* WeatherDataViewModel.swift */; };
+		86B190AF27C3D26100860339 /* TestWeather.json in Resources */ = {isa = PBXBuildFile; fileRef = 86B190AB27C3B62300860339 /* TestWeather.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -120,6 +120,7 @@
 		86B1909127C3A62E00860339 /* FiveDayWeatherTests */ = {
 			isa = PBXGroup;
 			children = (
+				86B190AB27C3B62300860339 /* TestWeather.json */,
 				86B1909227C3A62E00860339 /* FiveDayWeatherTests.swift */,
 			);
 			path = FiveDayWeatherTests;
@@ -137,7 +138,6 @@
 		86B190A827C3B10400860339 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				86B190AB27C3B62300860339 /* TestWeather.json */,
 				86B190A927C3B11B00860339 /* WeatherData.swift */,
 				86B190AD27C3B7CD00860339 /* WeatherDataViewModel.swift */,
 			);
@@ -248,7 +248,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				86B190AC27C3B62300860339 /* TestWeather.json in Resources */,
 				86B1908627C3A60200860339 /* Preview Assets.xcassets in Resources */,
 				86B1908327C3A60200860339 /* Assets.xcassets in Resources */,
 			);
@@ -258,6 +257,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				86B190AF27C3D26100860339 /* TestWeather.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

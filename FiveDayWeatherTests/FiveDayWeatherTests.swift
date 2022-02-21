@@ -7,6 +7,8 @@
 
 import XCTest
 
+@testable import FiveDayWeather
+
 class FiveDayWeatherTests: XCTestCase {
 
     override func setUpWithError() throws {
@@ -17,12 +19,18 @@ class FiveDayWeatherTests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-        // Any test you write for XCTest can be annotated as throws and async.
-        // Mark your test throws to produce an unexpected failure when your test encounters an uncaught error.
-        // Mark your test async to allow awaiting for asynchronous code to complete. Check the results with assertions afterwards.
+    func testDecodingWeatherFromJson() throws {
+
+        // GIVEN
+        guard let jsonData = readLocalFile(forName: "TestWeather") else { XCTFail("Can't read local json file"); return }
+        // WHEN
+        let weatherData = try? JSONDecoder().decode(WeatherData.self, from: jsonData)
+        // THEN
+        XCTAssertTrue(weatherData?.city.name == "Glasgow")
+        XCTAssertTrue(weatherData?.timeStampsReturned == 40)
+        XCTAssertTrue(weatherData?.list[1].sys.partOfDay == .night)
+        XCTAssertTrue(weatherData?.list[0].main.temp == 9.07)
+         
     }
 
     func testPerformanceExample() throws {
@@ -31,5 +39,19 @@ class FiveDayWeatherTests: XCTestCase {
             // Put the code you want to measure the time of here.
         }
     }
-
+    
+    // Helper Functions
+    
+    func readLocalFile(forName name: String) -> Data? {
+        do { // Bundle(for: type(of: self))
+            if let bundlePath = Bundle(for: type(of: self )).path(forResource: name, ofType: "json"),
+               let jsonData = try String(contentsOfFile: bundlePath).data(using: .utf8) {
+                return jsonData
+            }
+        } catch {
+            print(error)
+        }
+        
+        return nil
+    }
 }
