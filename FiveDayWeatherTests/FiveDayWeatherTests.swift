@@ -29,12 +29,12 @@ class FiveDayWeatherTests: XCTestCase {
         // THEN
         XCTAssertTrue(weatherData?.city.name == "Glasgow")
         XCTAssertTrue(weatherData?.timeStampsReturned == 40)
-        XCTAssertTrue(weatherData?.list[1].sys.partOfDay == .night)
-        XCTAssertTrue(weatherData?.list[0].main.temp == 9.07)
+        XCTAssertTrue(weatherData?.weatherForecastsList[1].sys.partOfDay == .night)
+        XCTAssertTrue(weatherData?.weatherForecastsList[0].main.temp == 9.07)
          
     }
     
-    func testYetAnother() throws {
+    func testGettingWeatherFromAPI() throws {
         
         let expectation = XCTestExpectation(description: "Get weather data from test api call")
 

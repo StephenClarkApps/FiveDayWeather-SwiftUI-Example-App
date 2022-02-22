@@ -9,5 +9,7 @@ import Foundation
 
 class WeatherDataViewModel: ObservableObject {
 
-    @Published var city: String = ""
+    @Published var cityName: String = ""
+    @Published var weatherForecastsList: [ForecastForGivenDayAndTime] = []
+    
 }

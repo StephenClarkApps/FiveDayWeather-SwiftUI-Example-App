@@ -12,14 +12,14 @@ struct WeatherData: Codable {
     let cod: String // Internal parameter
     let message: Int //  Internal parameter
     let timeStampsReturned: Int 
-    let list: [List]
+    let weatherForecastsList: [ForecastForGivenDayAndTime]
     let city: City
 
     enum CodingKeys: String, CodingKey {
         case cod = "cod"
         case message = "message"
         case timeStampsReturned = "cnt"
-        case list = "list"
+        case weatherForecastsList = "list" 
         case city = "city"
     }
 }
@@ -58,8 +58,8 @@ struct Coord: Codable {
     }
 }
 
-// MARK: - List
-struct List: Codable {
+// MARK: - ForecastForGivenDayAndTime
+struct ForecastForGivenDayAndTime: Codable {
     let dt: Int // Time of data forecasted, unix, UTC
     let main: MainClass
     let weather: [Weather]
