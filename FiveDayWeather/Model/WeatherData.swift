@@ -59,7 +59,7 @@ struct Coord: Codable {
 }
 
 // MARK: - ForecastForGivenDayAndTime
-struct ForecastForGivenDayAndTime: Codable {
+struct ForecastForGivenDayAndTime: Codable, Hashable {
     let dt: Int // Time of data forecasted, unix, UTC
     let main: MainClass
     let weather: [Weather]
@@ -88,7 +88,7 @@ struct ForecastForGivenDayAndTime: Codable {
 }
 
 // MARK: - Clouds
-struct Clouds: Codable {
+struct Clouds: Codable, Hashable {
     let all: Int
 
     enum CodingKeys: String, CodingKey {
@@ -97,7 +97,7 @@ struct Clouds: Codable {
 }
 
 // MARK: - MainClass
-struct MainClass: Codable {
+struct MainClass: Codable, Hashable {
     let temp: Double
     let feelsLike: Double
     let tempMin: Double
@@ -122,7 +122,7 @@ struct MainClass: Codable {
 }
 
 // MARK: - Rain
-struct Rain: Codable {
+struct Rain: Codable, Hashable {
     let mmVolumeOfRainInLastThreeHours: Double
 
     enum CodingKeys: String, CodingKey {
@@ -131,7 +131,7 @@ struct Rain: Codable {
 }
 
 // MARK: - Sys
-struct Sys: Codable {
+struct Sys: Codable, Hashable {
     let partOfDay: PartOfDay // Part of the day (n - night, d - day)
 
     enum CodingKeys: String, CodingKey {
@@ -139,13 +139,14 @@ struct Sys: Codable {
     }
 }
 
-enum PartOfDay: String, Codable {
+enum PartOfDay: String, Codable, Hashable {
     case day = "d"
     case night = "n"
 }
 
 // MARK: - Weather
-struct Weather: Codable {
+struct Weather: Codable, Hashable {
+    
     let id: Int
     let main: MainConditionsEnum  // Group of weather parameters (Rain, Snow, Extreme etc.)
     let weatherDescription: String // Weather condition within the group.
@@ -160,10 +161,10 @@ struct Weather: Codable {
 }
 
 // https://openweathermap.org/weather-conditions#Weather-Condition-Codes-2
-enum MainConditionsEnum: String, Codable {
-    case thunderstorm = "Thunderstorm" // icon code 11d
-    case drizzle = "Drizzle"           //  09d
-    case rain = "Rain"                 // 10d 
+enum MainConditionsEnum: String, Codable, Hashable {
+    case thunderstorm = "Thunderstorm" 
+    case drizzle = "Drizzle"
+    case rain = "Rain"
     case snow = "Snow"
     case mist = "Mist"
     case smoke = "Smoke"
@@ -179,7 +180,7 @@ enum MainConditionsEnum: String, Codable {
 }
 
 // MARK: - Wind
-struct Wind: Codable {
+struct Wind: Codable, Hashable {
     let speed: Double
     let deg: Int
     let gust: Double

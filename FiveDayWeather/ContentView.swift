@@ -10,11 +10,30 @@ import SwiftUI
 struct ContentView: View {
     
     @StateObject var model: WeatherDataViewModel = WeatherDataViewModel()
-
+    
     var body: some View {
+        NavigationView {
+            List(model.weatherForecastsList, id: \.self) { weatherForecastItem in
+                
+                
+                ScrollView (.horizontal, showsIndicators: false) {
+                    HStack {
+                        //contents
+                        Image(systemName: "heart.fill")
+                        Text(weatherForecastItem.dtTxt)
+                        Text(weatherForecastItem.conditions)
+                        Text(weatherForecastItem.conditionsDescription)
 
-        Text("Hello, world!")
-            .padding()
+                    }
+                }.frame(height: 55)
+            }
+            .navigationBarTitle(Text(model.cityName))
+            .onAppear {
+                model.featchWeatherData()
+            }
+
+
+        } // :Navigation View
     }
 }
 

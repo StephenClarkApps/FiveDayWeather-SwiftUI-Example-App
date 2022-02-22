@@ -18,6 +18,7 @@
 		86B190AE27C3B7CD00860339 /* WeatherDataViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86B190AD27C3B7CD00860339 /* WeatherDataViewModel.swift */; };
 		86B190AF27C3D26100860339 /* TestWeather.json in Resources */ = {isa = PBXBuildFile; fileRef = 86B190AB27C3B62300860339 /* TestWeather.json */; };
 		86B190B227C3DD5800860339 /* APICaller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86B190B127C3DD5800860339 /* APICaller.swift */; };
+		86B190B427C546C800860339 /* WeatherDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86B190B327C546C800860339 /* WeatherDataService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +53,7 @@
 		86B190AB27C3B62300860339 /* TestWeather.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = TestWeather.json; sourceTree = "<group>"; };
 		86B190AD27C3B7CD00860339 /* WeatherDataViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherDataViewModel.swift; sourceTree = "<group>"; };
 		86B190B127C3DD5800860339 /* APICaller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APICaller.swift; sourceTree = "<group>"; };
+		86B190B327C546C800860339 /* WeatherDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherDataService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -151,6 +153,7 @@
 			isa = PBXGroup;
 			children = (
 				86B190B127C3DD5800860339 /* APICaller.swift */,
+				86B190B327C546C800860339 /* WeatherDataService.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -290,6 +293,7 @@
 				86B190AA27C3B11B00860339 /* WeatherData.swift in Sources */,
 				86B1907F27C3A5FF00860339 /* FiveDayWeatherApp.swift in Sources */,
 				86B190B227C3DD5800860339 /* APICaller.swift in Sources */,
+				86B190B427C546C800860339 /* WeatherDataService.swift in Sources */,
 				86B190AE27C3B7CD00860339 /* WeatherDataViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
