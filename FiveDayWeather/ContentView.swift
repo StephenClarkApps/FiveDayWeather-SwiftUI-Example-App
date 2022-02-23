@@ -20,38 +20,44 @@ struct ContentView: View {
             
             List(self.model.forecastsForOneDay, id: \.self) { weatherForecastItem in
                 ZStack {
-                    ScrollView (.horizontal, showsIndicators: false) {
-                        HStack {
-                            // DATE
-                            VStack {
-                                Text(weatherForecastItem.dayDateText).bold().multilineTextAlignment(.center)
-                            }
-                            
-                            Spacer()
-                            
-                            ForEach(weatherForecastItem.arrayOfTimeBasedForecasts, id: \.self) { forecast in
-                                VStack {
-                                    Text(forecast.timeText).font(Font(UIFont.systemFont(ofSize: 10.0)))
-                                    Image(systemName: "cloud.rain")
-                                    Text(forecast.conditions).font(Font(UIFont.systemFont(ofSize: 10.0)))
-                                }.frame(width: 50)
-                                .padding(5)
-                                .border(.gray)
-                            }
-                            
-                            Spacer().padding(4)
-                            
-                        } //: HStack
-                    } //: ScrollView
-                    .frame(height: 65)
-                    
                     HStack {
-                        Spacer()
-                        Image(systemName: "chevron.right")
-                            .frame(width: 10, height: 65, alignment: .center)
-                            .foregroundColor(.gray)
-                            .background(.white)
+                        VStack {
+                            Text(weatherForecastItem.dayDateText).bold().multilineTextAlignment(.center)
+                        }
+                        
+                        ScrollView (.horizontal, showsIndicators: false) {
+                            HStack {
+                                ForEach(weatherForecastItem.arrayOfTimeBasedForecasts, id: \.self) { forecast in
+                                    VStack {
+                                        Text(forecast.timeText).font(Font(UIFont.systemFont(ofSize: 12.0))).bold()
+                                        AsyncImage(
+                                            url: URL(string:"https://openweathermap.org/img/wn/" + forecast.iconString + ".png")!,
+                                            placeholder: { Image(systemName: "hourglass.tophalf.filled") },
+                                            image: { Image(uiImage: $0).resizable() })
+                                            .frame(width: 35, height: 35, alignment: .center).padding(0)
+                                        Text(forecast.conditions).font(Font(UIFont.systemFont(ofSize: 12.0))).bold()
+                                    }.frame(width: 60)
+                                        .padding(4)
+                                        .border(.gray, width: 0.5)
+                                }
+                                
+                                Spacer().padding(5)
+                            } //: HStack
+                        } //: ScrollView
+                        .frame(height: 80)
+                        .padding()
+                        
                     } //: HStack
+                    
+                    if weatherForecastItem.arrayOfTimeBasedForecasts.count > 3 {
+                        HStack {
+                            Spacer()
+                            Image(systemName: "chevron.right")
+                                .frame(width: 10, height: 65, alignment: .center)
+                                .foregroundColor(.gray)
+                                .background(.white)
+                        } //: HStack
+                    } //: if
                     
                 } //: ZStack
             } //: List
@@ -59,7 +65,6 @@ struct ContentView: View {
             .onAppear {
                 model.featchWeatherData()
             }
-            
             
         } // :Navigation View
     }

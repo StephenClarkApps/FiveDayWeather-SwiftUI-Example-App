@@ -14,13 +14,13 @@ final class WeatherDataService: WeatherFetchingService {
 
     var components: URLComponents {
         var components = URLComponents()
-        components.scheme = "https"
-        components.host = "api.openweathermap.org"
-        components.path = "/data/2.5/forecast"
+        components.scheme = Constants.API.defaultScheme
+        components.host = Constants.API.defaultHost
+        components.path = Constants.API.defaultPath
         // TODO: - lat and long from location service, and appid from constants / env variable for production
         components.queryItems = [URLQueryItem(name: "lat", value: "55.8642"),
                                  URLQueryItem(name: "lon", value: "-4.2518"),
-                                 URLQueryItem(name: "appid", value: "53e60d29c7c5e2252dd959f3cfa42a28")]
+                                 URLQueryItem(name: "appid", value: Constants.API.apiKey)]
         return components
     }
     
