@@ -13,10 +13,10 @@ class WeatherDataViewModel: ObservableObject {
     private let weatherDataService = WeatherDataService()
     
     var cancellable: AnyCancellable?
-
-    @Published var cityName: String = ""
     
+    @Published var cityName: String = ""
     @Published var weatherForecastsList: [ForecastForGivenDayAndTimeViewModel] = []
+    @Published var forecastsForOneDay: [ForecastForParticularDayViewModel] = []
     
     func featchWeatherData() {
         cancellable = weatherDataService.fetchFiveDayWeather().sink(receiveCompletion: { _ in
@@ -25,16 +25,64 @@ class WeatherDataViewModel: ObservableObject {
             guard let strongSelf = self else { return }
             strongSelf.cityName = weatherContainer.city.name
             strongSelf.weatherForecastsList = weatherContainer.weatherForecastsList.map { ForecastForGivenDayAndTimeViewModel($0) }
+            
+            var temporaryDateString = ""
+            var temporaryForecastForParticularDayViewModel =  ForecastForParticularDayViewModel(dayDateText: "", arrayOfTimeBasedForecasts: [])
+            
+            strongSelf.weatherForecastsList.forEach { hourForecast in
+                if hourForecast.dateText == temporaryDateString {    // Match - means we build up our list for a given day by adding additional ForecastForParticularDayViewModel
+                    temporaryForecastForParticularDayViewModel.arrayOfTimeBasedForecasts.append(hourForecast)
+                    
+                } else {
+                    // 1. First save a given day to our forecasts array (unless day text is blank)
+                    if temporaryForecastForParticularDayViewModel.dayDateText == "" {
+                        temporaryDateString = hourForecast.dateText
+                        temporaryForecastForParticularDayViewModel.dayDateText = temporaryDateString // SET ONCE PER CASE
+                        temporaryForecastForParticularDayViewModel.arrayOfTimeBasedForecasts.append(hourForecast)
+                    } else {
+                        strongSelf.forecastsForOneDay.append(temporaryForecastForParticularDayViewModel) // SAVE
+                        temporaryForecastForParticularDayViewModel =  ForecastForParticularDayViewModel(dayDateText: "", arrayOfTimeBasedForecasts: []) // RESET TEMP STORE
+                        // Add initial record
+                        temporaryDateString = hourForecast.dateText
+                        temporaryForecastForParticularDayViewModel.dayDateText = temporaryDateString
+                        temporaryForecastForParticularDayViewModel.arrayOfTimeBasedForecasts.append(hourForecast)
+                    }
+                }
+            }
+            
         })
     }
 }
 
 struct ForecastForGivenDayAndTimeViewModel: Codable, Hashable {
-
+    
     private let forecastForGivenDayAndTime: ForecastForGivenDayAndTime
     
     var dtTxt: String {
         return forecastForGivenDayAndTime.dtTxt
+    }
+    
+    // We're interested in displaying results in a horizontal scroll view which come from
+    // the same day of the week so we can group results by this parameter.
+    var dateText: String {
+        
+        let date = Date(timeIntervalSince1970: Double(forecastForGivenDayAndTime.dt))
+        let dateFormatter = DateFormatter()
+        dateFormatter.timeStyle = DateFormatter.Style.none //Set time style
+        dateFormatter.dateFormat = "E\nd MMM"
+        dateFormatter.timeZone = .current
+        return dateFormatter.string(from: date)
+    }
+    
+    /// Return a time text such as 9 AM, 9 PM for a given hourly forecast
+    var timeText: String {
+        let date = Date(timeIntervalSince1970: Double(forecastForGivenDayAndTime.dt))
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "h a"
+        dateFormatter.amSymbol = "AM"
+        dateFormatter.pmSymbol = "PM"
+        dateFormatter.timeZone = .current
+        return dateFormatter.string(from: date)
     }
     
     var conditions: String {
@@ -61,5 +109,13 @@ struct ForecastForGivenDayAndTimeViewModel: Codable, Hashable {
 // row for each day, we'll need a view model that combines the hours for each day,
 // into something that's ready to be displayed in rows.
 struct ForecastForParticularDayViewModel: Codable, Hashable {
+    
+    var dayDateText: String = "" // i.e. "Wed\n23rd Feb"
+    var arrayOfTimeBasedForecasts: [ForecastForGivenDayAndTimeViewModel]
+    
+    init(dayDateText: String, arrayOfTimeBasedForecasts: [ForecastForGivenDayAndTimeViewModel]) {
+        self.dayDateText = dayDateText
+        self.arrayOfTimeBasedForecasts = arrayOfTimeBasedForecasts
+    }
     
 }

@@ -8,7 +8,7 @@
 import Combine
 import Foundation
 
-final class WeatherDataService {
+final class WeatherDataService: WeatherFetchingService {
     
     // https://api.openweathermap.org/data/2.5/forecast?lat=55.8642&lon=-4.2518&units=metric&appid=53e60d29c7c5e2252dd959f3cfa42a28
 
@@ -32,4 +32,10 @@ final class WeatherDataService {
             .eraseToAnyPublisher()
     }
     
+}
+
+// We can use protocols to describe what our data service offers, allowing us to
+// create mock objects in our unit testing which also conform to this protocol
+protocol WeatherFetchingService {
+    func fetchFiveDayWeather() -> AnyPublisher<WeatherData, Error>
 }

@@ -104,6 +104,8 @@
 		86B1907D27C3A5FF00860339 /* FiveDayWeather */ = {
 			isa = PBXGroup;
 			children = (
+				86C90E8127C65A6400A35FCE /* ImageService */,
+				86C90E8027C658DF00A35FCE /* LocationService */,
 				86B190B027C3DD4700860339 /* Network */,
 				86B190A827C3B10400860339 /* Model */,
 				86B1907E27C3A5FF00860339 /* FiveDayWeatherApp.swift */,
@@ -156,6 +158,20 @@
 				86B190B327C546C800860339 /* WeatherDataService.swift */,
 			);
 			path = Network;
+			sourceTree = "<group>";
+		};
+		86C90E8027C658DF00A35FCE /* LocationService */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = LocationService;
+			sourceTree = "<group>";
+		};
+		86C90E8127C65A6400A35FCE /* ImageService */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ImageService;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
