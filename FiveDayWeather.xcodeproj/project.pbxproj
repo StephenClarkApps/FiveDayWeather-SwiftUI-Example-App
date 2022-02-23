@@ -27,6 +27,7 @@
 		86C90E8D27C6815700A35FCE /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86C90E8C27C6815700A35FCE /* LocationManager.swift */; };
 		86C90E9027C6CB0200A35FCE /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86C90E8F27C6CB0200A35FCE /* MapView.swift */; };
 		86C90E9227C6D20900A35FCE /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86C90E9127C6D20900A35FCE /* ContentView.swift */; };
+		86C90E9427C6EA1F00A35FCE /* FDApperance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86C90E9327C6EA1F00A35FCE /* FDApperance.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,6 +71,7 @@
 		86C90E8C27C6815700A35FCE /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		86C90E8F27C6CB0200A35FCE /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		86C90E9127C6D20900A35FCE /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		86C90E9327C6EA1F00A35FCE /* FDApperance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FDApperance.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,12 +123,13 @@
 			isa = PBXGroup;
 			children = (
 				86C90E8A27C665A700A35FCE /* Constants.swift */,
+				86B1907E27C3A5FF00860339 /* FiveDayWeatherApp.swift */,
+				86C90E9527C6EB6A00A35FCE /* Theme */,
 				86C90E8E27C6CAE600A35FCE /* View */,
 				86C90E8127C65A6400A35FCE /* ImageService */,
 				86C90E8027C658DF00A35FCE /* LocationService */,
 				86B190B027C3DD4700860339 /* Network */,
 				86B190A827C3B10400860339 /* Model */,
-				86B1907E27C3A5FF00860339 /* FiveDayWeatherApp.swift */,
 				86B1908227C3A60200860339 /* Assets.xcassets */,
 				86B1908427C3A60200860339 /* Preview Content */,
 			);
@@ -204,6 +207,14 @@
 				86C90E8F27C6CB0200A35FCE /* MapView.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		86C90E9527C6EB6A00A35FCE /* Theme */ = {
+			isa = PBXGroup;
+			children = (
+				86C90E9327C6EA1F00A35FCE /* FDApperance.swift */,
+			);
+			path = Theme;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -348,6 +359,7 @@
 				86B1907F27C3A5FF00860339 /* FiveDayWeatherApp.swift in Sources */,
 				86C90E8627C65C6700A35FCE /* EnvironmentValues+ImageCache.swift in Sources */,
 				86C90E8D27C6815700A35FCE /* LocationManager.swift in Sources */,
+				86C90E9427C6EA1F00A35FCE /* FDApperance.swift in Sources */,
 				86B190B227C3DD5800860339 /* APICaller.swift in Sources */,
 				86B190B427C546C800860339 /* WeatherDataService.swift in Sources */,
 				86B190AE27C3B7CD00860339 /* WeatherDataViewModel.swift in Sources */,
@@ -571,6 +583,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 4SQG5NJNPF;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.activatedapps.FiveDayWeatherTests;
@@ -588,6 +601,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 4SQG5NJNPF;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.activatedapps.FiveDayWeatherTests;
@@ -604,6 +618,7 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 4SQG5NJNPF;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.activatedapps.FiveDayWeatherUITests;
@@ -620,6 +635,7 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 4SQG5NJNPF;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.activatedapps.FiveDayWeatherUITests;

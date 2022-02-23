@@ -11,27 +11,7 @@ import Foundation
 struct ContentView: View {
     
     init() {
-        let appearance = UITabBar.appearance()
-        
-        appearance.isOpaque = true
-        appearance.tintColor = UIColor.white
-        appearance.barTintColor = UIColor.systemBackground
-        appearance.backgroundColor = UIColor.systemBackground
-        
-        // Code extends bar color under top data / time area
-        if #available(iOS 15.0, *) {
-            let appearance = UINavigationBarAppearance()
-            appearance.configureWithOpaqueBackground()
-            appearance.titleTextAttributes =  [.foregroundColor: UIColor.white,
-                                               NSAttributedString.Key.font:  UIFont.systemFont(ofSize: 10)]
-            appearance.backgroundColor = UIColor.systemBackground
-            UINavigationBar.appearance().standardAppearance = appearance
-            UINavigationBar.appearance().scrollEdgeAppearance = appearance
-            
-        }
-        
-        appearance.barStyle = .black
-        appearance.isTranslucent = false
+        FDAppearance.setUpApperance()
     }
 
     var body: some View {
@@ -49,12 +29,12 @@ struct ContentView: View {
                     Text("Map")
                 }
                 .tag(2)
-        }//.background(.gray)
+        }
     }
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView() //.environmentObject(Order())
+        ContentView()
     }
 }
