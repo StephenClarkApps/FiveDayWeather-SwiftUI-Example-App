@@ -14,18 +14,34 @@ class WeatherDataViewModel: ObservableObject {
     
     var cancellable: AnyCancellable?
     
+    var weatherDataHasBeenRequestedBefore: Bool = false
+    
     @Published var cityName: String = ""
     @Published var weatherForecastsList: [ForecastForGivenDayAndTimeViewModel] = []
     @Published var forecastsForOneDay: [ForecastForParticularDayViewModel] = []
     
-    func featchWeatherData() {
-        cancellable = weatherDataService.fetchFiveDayWeather().sink(receiveCompletion: { _ in
-            
+    func featchWeatherData(lat: Double, long: Double) {
+        
+        self.weatherDataHasBeenRequestedBefore = true
+        // Reset paremeters prior to reloading data
+        cityName = ""
+        weatherForecastsList = []
+        forecastsForOneDay = []
+        
+        cancellable = weatherDataService.fetchFiveDayWeather(lat: lat, long: long).sink(receiveCompletion: { [weak self] completion in
+            switch completion {
+            case .finished:
+                print("Successfully got data.")
+                
+            case .failure(let error):
+                print(error)
+            }
         }, receiveValue: { [weak self] weatherContainer in
             guard let strongSelf = self else { return }
             strongSelf.cityName = weatherContainer.city.name
             strongSelf.weatherForecastsList = weatherContainer.weatherForecastsList.map { ForecastForGivenDayAndTimeViewModel($0) }
             
+            // I'll use these "temporary" parameters to covert to a day based model
             var temporaryDateString = ""
             var temporaryForecastForParticularDayViewModel =  ForecastForParticularDayViewModel(dayDateText: "", arrayOfTimeBasedForecasts: [])
             
@@ -114,10 +130,12 @@ struct ForecastForGivenDayAndTimeViewModel: Codable, Hashable {
 // into something that's ready to be displayed in rows.
 struct ForecastForParticularDayViewModel: Codable, Hashable {
     
+    var uuid: UUID
     var dayDateText: String = "" // i.e. "Wed\n23rd Feb"
     var arrayOfTimeBasedForecasts: [ForecastForGivenDayAndTimeViewModel]
     
     init(dayDateText: String, arrayOfTimeBasedForecasts: [ForecastForGivenDayAndTimeViewModel]) {
+        self.uuid = UUID() // Helps with default hashable in this case
         self.dayDateText = dayDateText
         self.arrayOfTimeBasedForecasts = arrayOfTimeBasedForecasts
     }

@@ -10,22 +10,26 @@ import Foundation
 
 final class WeatherDataService: WeatherFetchingService {
     
-    // https://api.openweathermap.org/data/2.5/forecast?lat=55.8642&lon=-4.2518&units=metric&appid=53e60d29c7c5e2252dd959f3cfa42a28
-
+    var latString: String = "0.0"
+    var longString: String = "0.0"
+    
     var components: URLComponents {
         var components = URLComponents()
         components.scheme = Constants.API.defaultScheme
         components.host = Constants.API.defaultHost
         components.path = Constants.API.defaultPath
         // TODO: - lat and long from location service, and appid from constants / env variable for production
-        components.queryItems = [URLQueryItem(name: "lat", value: "55.8642"),
-                                 URLQueryItem(name: "lon", value: "-4.2518"),
+        components.queryItems = [URLQueryItem(name: "lat", value: latString),
+                                 URLQueryItem(name: "lon", value: longString),
                                  URLQueryItem(name: "units", value: "metric"),
                                  URLQueryItem(name: "appid", value: Constants.API.apiKey)]
         return components
     }
     
-    func fetchFiveDayWeather() -> AnyPublisher<WeatherData, Error> {
+    func fetchFiveDayWeather(lat: Double, long: Double) -> AnyPublisher<WeatherData, Error> {
+        self.latString = String(lat)
+        self.longString = String(long)
+        
         return URLSession.shared.dataTaskPublisher(for: components.url!)
             .map { $0.data }
             .decode(type: WeatherData.self, decoder: JSONDecoder())
@@ -38,5 +42,5 @@ final class WeatherDataService: WeatherFetchingService {
 // We can use protocols to describe what our data service offers, allowing us to
 // create mock objects in our unit testing which also conform to this protocol
 protocol WeatherFetchingService {
-    func fetchFiveDayWeather() -> AnyPublisher<WeatherData, Error>
+    func fetchFiveDayWeather(lat: Double, long: Double) -> AnyPublisher<WeatherData, Error>
 }

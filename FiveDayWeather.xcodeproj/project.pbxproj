@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		86B1907F27C3A5FF00860339 /* FiveDayWeatherApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86B1907E27C3A5FF00860339 /* FiveDayWeatherApp.swift */; };
-		86B1908127C3A5FF00860339 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86B1908027C3A5FF00860339 /* ContentView.swift */; };
+		86B1908127C3A5FF00860339 /* WeatherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86B1908027C3A5FF00860339 /* WeatherView.swift */; };
 		86B1908327C3A60200860339 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 86B1908227C3A60200860339 /* Assets.xcassets */; };
 		86B1908627C3A60200860339 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 86B1908527C3A60200860339 /* Preview Assets.xcassets */; };
 		86B1909327C3A62E00860339 /* FiveDayWeatherTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86B1909227C3A62E00860339 /* FiveDayWeatherTests.swift */; };
@@ -24,6 +24,9 @@
 		86C90E8727C65C6700A35FCE /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86C90E8427C65C6700A35FCE /* ImageCache.swift */; };
 		86C90E8927C65C7000A35FCE /* AsyncImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86C90E8827C65C7000A35FCE /* AsyncImage.swift */; };
 		86C90E8B27C665A700A35FCE /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86C90E8A27C665A700A35FCE /* Constants.swift */; };
+		86C90E8D27C6815700A35FCE /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86C90E8C27C6815700A35FCE /* LocationManager.swift */; };
+		86C90E9027C6CB0200A35FCE /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86C90E8F27C6CB0200A35FCE /* MapView.swift */; };
+		86C90E9227C6D20900A35FCE /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86C90E9127C6D20900A35FCE /* ContentView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,7 +49,7 @@
 /* Begin PBXFileReference section */
 		86B1907B27C3A5FF00860339 /* FiveDayWeather.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FiveDayWeather.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		86B1907E27C3A5FF00860339 /* FiveDayWeatherApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiveDayWeatherApp.swift; sourceTree = "<group>"; };
-		86B1908027C3A5FF00860339 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		86B1908027C3A5FF00860339 /* WeatherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherView.swift; sourceTree = "<group>"; };
 		86B1908227C3A60200860339 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		86B1908527C3A60200860339 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		86B1909027C3A62E00860339 /* FiveDayWeatherTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FiveDayWeatherTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -64,6 +67,9 @@
 		86C90E8427C65C6700A35FCE /* ImageCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
 		86C90E8827C65C7000A35FCE /* AsyncImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AsyncImage.swift; sourceTree = "<group>"; };
 		86C90E8A27C665A700A35FCE /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		86C90E8C27C6815700A35FCE /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		86C90E8F27C6CB0200A35FCE /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
+		86C90E9127C6D20900A35FCE /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,12 +121,12 @@
 			isa = PBXGroup;
 			children = (
 				86C90E8A27C665A700A35FCE /* Constants.swift */,
+				86C90E8E27C6CAE600A35FCE /* View */,
 				86C90E8127C65A6400A35FCE /* ImageService */,
 				86C90E8027C658DF00A35FCE /* LocationService */,
 				86B190B027C3DD4700860339 /* Network */,
 				86B190A827C3B10400860339 /* Model */,
 				86B1907E27C3A5FF00860339 /* FiveDayWeatherApp.swift */,
-				86B1908027C3A5FF00860339 /* ContentView.swift */,
 				86B1908227C3A60200860339 /* Assets.xcassets */,
 				86B1908427C3A60200860339 /* Preview Content */,
 			);
@@ -174,6 +180,7 @@
 		86C90E8027C658DF00A35FCE /* LocationService */ = {
 			isa = PBXGroup;
 			children = (
+				86C90E8C27C6815700A35FCE /* LocationManager.swift */,
 			);
 			path = LocationService;
 			sourceTree = "<group>";
@@ -187,6 +194,16 @@
 				86C90E8227C65C6700A35FCE /* ImageLoader.swift */,
 			);
 			path = ImageService;
+			sourceTree = "<group>";
+		};
+		86C90E8E27C6CAE600A35FCE /* View */ = {
+			isa = PBXGroup;
+			children = (
+				86C90E9127C6D20900A35FCE /* ContentView.swift */,
+				86B1908027C3A5FF00860339 /* WeatherView.swift */,
+				86C90E8F27C6CB0200A35FCE /* MapView.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -323,11 +340,14 @@
 				86C90E8927C65C7000A35FCE /* AsyncImage.swift in Sources */,
 				86C90E8B27C665A700A35FCE /* Constants.swift in Sources */,
 				86C90E8527C65C6700A35FCE /* ImageLoader.swift in Sources */,
-				86B1908127C3A5FF00860339 /* ContentView.swift in Sources */,
+				86B1908127C3A5FF00860339 /* WeatherView.swift in Sources */,
+				86C90E9027C6CB0200A35FCE /* MapView.swift in Sources */,
 				86B190AA27C3B11B00860339 /* WeatherData.swift in Sources */,
 				86C90E8727C65C6700A35FCE /* ImageCache.swift in Sources */,
+				86C90E9227C6D20900A35FCE /* ContentView.swift in Sources */,
 				86B1907F27C3A5FF00860339 /* FiveDayWeatherApp.swift in Sources */,
 				86C90E8627C65C6700A35FCE /* EnvironmentValues+ImageCache.swift in Sources */,
+				86C90E8D27C6815700A35FCE /* LocationManager.swift in Sources */,
 				86B190B227C3DD5800860339 /* APICaller.swift in Sources */,
 				86B190B427C546C800860339 /* WeatherDataService.swift in Sources */,
 				86B190AE27C3B7CD00860339 /* WeatherDataViewModel.swift in Sources */,
@@ -494,6 +514,8 @@
 				DEVELOPMENT_TEAM = 4SQG5NJNPF;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSLocationUsageDescription = "We'll use your location to find the weather forecast closest to you.";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "We'll use your location to find the weather forecast closest to you.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -523,6 +545,8 @@
 				DEVELOPMENT_TEAM = 4SQG5NJNPF;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSLocationUsageDescription = "We'll use your location to find the weather forecast closest to you.";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "We'll use your location to find the weather forecast closest to you.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

@@ -15,4 +15,9 @@ class Constants {
         static let defaultHost = "api.openweathermap.org"
         static let defaultPath = "/data/2.5/forecast"
     }
+    
+    struct RemoteImages {
+        static let imagesPath = "https://openweathermap.org/img/wn/"
+        static let imagesSuffix = ".png"
+    }
 }

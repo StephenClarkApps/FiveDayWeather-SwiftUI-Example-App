@@ -1,5 +1,5 @@
 //
-//  ContentView.swift
+//  WeatherView.swift
 //  FiveDayWeather
 //
 //  Created by Stephen Clark on 21/02/2022.
@@ -7,17 +7,17 @@
 
 import SwiftUI
 
-struct ContentView: View {
+struct WeatherView: View {
     
+    @State private var mapIsPresented = false
+
     @StateObject var model: WeatherDataViewModel = WeatherDataViewModel()
     
+    @StateObject var locationManager = LocationManager()
+        
     var body: some View {
         NavigationView {
-            
-            // Each row should clearly show date, and each cell
-            // within the row should clearly show the temperature
-            // and the time of the day.
-            
+
             List(self.model.forecastsForOneDay, id: \.self) { weatherForecastItem in
                 ZStack {
                     HStack {
@@ -31,8 +31,8 @@ struct ContentView: View {
                                     VStack {
                                         Text(forecast.timeText).font(Font(UIFont.systemFont(ofSize: 12.0))).bold()
                                         AsyncImage(
-                                            url: URL(string:"https://openweathermap.org/img/wn/" + forecast.iconString + ".png")!,
-                                            placeholder: { Image(systemName: "hourglass.tophalf.filled") },
+                                            url: URL(string: Constants.RemoteImages.imagesPath + forecast.iconString + Constants.RemoteImages.imagesSuffix)!,
+                                            placeholder: {  ProgressView() },
                                             image: { Image(uiImage: $0).resizable() })
                                             .frame(width: 35, height: 35, alignment: .center).padding(0)
                                         Text(forecast.temperatureInCelciusString).font(Font(UIFont.systemFont(ofSize: 12.0))).bold()
@@ -63,16 +63,29 @@ struct ContentView: View {
                 } //: ZStack
             } //: List
             .navigationBarTitle(Text(model.cityName))
-            .onAppear {
-                model.featchWeatherData()
+            .refreshable {
+                // Loading
+                model.featchWeatherData(lat: self.locationManager.lastLocation?.coordinate.latitude ?? 0.0,
+                                        long: self.locationManager.lastLocation?.coordinate.longitude ?? 0.0)
+            }
+            .onChange(of: locationManager.lastLocation) { loc in
+                
+                // If we haven't already got results and the location changes, then load the data
+                if (locationManager.statusString == "authorizedWhenInUse" || locationManager.statusString == "authorizedAlways")
+                    && !(self.model.weatherDataHasBeenRequestedBefore) {
+                    model.featchWeatherData(lat: loc?.coordinate.latitude ?? 0.0,
+                                            long: loc?.coordinate.longitude ?? 0.0)
+                }
+                
             }
             
         } // :Navigation View
+        .fullScreenCover(isPresented: $mapIsPresented, content: MapView.init)
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
+struct WeatherView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        WeatherView()
     }
 }
