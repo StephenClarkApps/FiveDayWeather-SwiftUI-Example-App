@@ -100,6 +100,10 @@ struct ForecastForGivenDayAndTimeViewModel: Codable, Hashable {
         return forecastForGivenDayAndTime.weather.first?.icon ?? ""
     }
     
+    var temperatureInCelciusString: String {
+        return String(Int(forecastForGivenDayAndTime.main.temp.rounded())) + " ℃"
+    }
+    
     init(_ forecastForGivenDayAndTime: ForecastForGivenDayAndTime) {
         self.forecastForGivenDayAndTime = forecastForGivenDayAndTime
     }

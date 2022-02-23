@@ -35,6 +35,7 @@ struct ContentView: View {
                                             placeholder: { Image(systemName: "hourglass.tophalf.filled") },
                                             image: { Image(uiImage: $0).resizable() })
                                             .frame(width: 35, height: 35, alignment: .center).padding(0)
+                                        Text(forecast.temperatureInCelciusString).font(Font(UIFont.systemFont(ofSize: 12.0))).bold()
                                         Text(forecast.conditions).font(Font(UIFont.systemFont(ofSize: 12.0))).bold()
                                     }.frame(width: 60)
                                         .padding(4)

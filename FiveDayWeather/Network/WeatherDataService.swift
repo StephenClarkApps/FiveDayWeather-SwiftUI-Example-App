@@ -20,6 +20,7 @@ final class WeatherDataService: WeatherFetchingService {
         // TODO: - lat and long from location service, and appid from constants / env variable for production
         components.queryItems = [URLQueryItem(name: "lat", value: "55.8642"),
                                  URLQueryItem(name: "lon", value: "-4.2518"),
+                                 URLQueryItem(name: "units", value: "metric"),
                                  URLQueryItem(name: "appid", value: Constants.API.apiKey)]
         return components
     }
