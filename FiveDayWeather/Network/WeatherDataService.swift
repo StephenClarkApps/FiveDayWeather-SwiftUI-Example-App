@@ -37,6 +37,13 @@ final class WeatherDataService: WeatherFetchingService {
             .eraseToAnyPublisher()
     }
     
+//    func fetchWeather() -> Future<WeatherData, Error> {
+//        return Future { promise in
+//
+//
+//        }
+//    }
+    
 }
 
 // We can use protocols to describe what our data service offers, allowing us to

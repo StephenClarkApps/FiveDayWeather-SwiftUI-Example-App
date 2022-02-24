@@ -55,12 +55,21 @@ class FiveDayWeatherTests: XCTestCase {
         
         wait(for: [expectation], timeout: 10.0)
     }
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        measure {
-            // Put the code you want to measure the time of here.
-        }
+    
+    func testForecastForGivenDayAndTimeViewModel() throws {
+        // Given
+        guard let jsonData = readLocalFile(forName: "TestWeather") else { XCTFail("Can't read local json file"); return }
+        let weatherData = try? JSONDecoder().decode(WeatherData.self, from: jsonData)
+        let someForecast = weatherData?.weatherForecastsList[1] // giving a ForecastForGivenDayAndTime
+        
+        // When
+        let associatedViewModel = ForecastForGivenDayAndTimeViewModel(someForecast!)
+        
+        // Then
+        XCTAssertTrue(associatedViewModel.dateText == "Mon\n21 Feb")
+        XCTAssertTrue(associatedViewModel.timeText == "6 PM")
+        XCTAssertTrue(associatedViewModel.iconString == "02n")
+       
     }
     
     // MARK: - Helper Functions

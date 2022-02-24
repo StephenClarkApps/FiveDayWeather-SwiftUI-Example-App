@@ -15,6 +15,7 @@ class FDAppearance {
     static func setUpApperance() {
         setupTableView()
         setupTabBarApperance()
+        setupNavigationBar()
     }
     
     static func setupTableView() {
@@ -45,5 +46,20 @@ class FDAppearance {
         
         appearance.barStyle = .black
         appearance.isTranslucent = false
+    }
+    
+    static func setupNavigationBar() {
+        let appearance = UINavigationBarAppearance()
+        appearance.configureWithOpaqueBackground()
+        appearance.backgroundColor = .systemBlue
+
+        let attrs: [NSAttributedString.Key: Any] = [
+            .foregroundColor: UIColor.white,
+            .font: UIFont.monospacedSystemFont(ofSize: 36, weight: .black)
+        ]
+
+        appearance.largeTitleTextAttributes = attrs
+
+        UINavigationBar.appearance().scrollEdgeAppearance = appearance
     }
 }

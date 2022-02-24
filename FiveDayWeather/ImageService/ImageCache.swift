@@ -15,7 +15,7 @@ struct TemporaryImageCache: ImageCache {
     private let cache: NSCache<NSURL, UIImage> = {
         let cache = NSCache<NSURL, UIImage>()
         cache.countLimit = 100                    // number of items to retain
-        cache.totalCostLimit = 1024 * 1024 * 100  // 100 MB
+        cache.totalCostLimit = 1024 * 1024 * 100  // Size constraint 100 MB
         return cache
     }()
     

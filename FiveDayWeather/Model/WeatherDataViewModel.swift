@@ -74,6 +74,10 @@ struct ForecastForGivenDayAndTimeViewModel: Codable, Hashable {
     
     private let forecastForGivenDayAndTime: ForecastForGivenDayAndTime
     
+    init(_ forecastForGivenDayAndTime: ForecastForGivenDayAndTime) {
+        self.forecastForGivenDayAndTime = forecastForGivenDayAndTime
+    }
+    
     var dtTxt: String {
         return forecastForGivenDayAndTime.dtTxt
     }
@@ -101,13 +105,13 @@ struct ForecastForGivenDayAndTimeViewModel: Codable, Hashable {
         return dateFormatter.string(from: date)
     }
     
+    // in the case of our json, the weather array always has just one item with id, main, description, icon as parameters
     var conditions: String {
-        // in the case of our json, the weather array always has just one item with id, main, description, icon as parameters
         return forecastForGivenDayAndTime.weather.first?.main.rawValue ?? ""
     }
     
+    // Description of the weather conditions
     var conditionsDescription: String {
-        // in the case of our json, the weather array always has just one item with id, main, description, icon as parameters
         return forecastForGivenDayAndTime.weather.first?.weatherDescription ?? ""
     }
     
@@ -118,10 +122,6 @@ struct ForecastForGivenDayAndTimeViewModel: Codable, Hashable {
     
     var temperatureInCelciusString: String {
         return String(Int(forecastForGivenDayAndTime.main.temp.rounded())) + " ℃"
-    }
-    
-    init(_ forecastForGivenDayAndTime: ForecastForGivenDayAndTime) {
-        self.forecastForGivenDayAndTime = forecastForGivenDayAndTime
     }
 }
 

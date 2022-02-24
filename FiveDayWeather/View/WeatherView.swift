@@ -9,11 +9,8 @@ import SwiftUI
 
 struct WeatherView: View {
     
-    @State private var mapIsPresented = false
-
-    @StateObject var model: WeatherDataViewModel = WeatherDataViewModel()
-    
-    @StateObject var locationManager = LocationManager()
+    @ObservedObject var model: WeatherDataViewModel = WeatherDataViewModel()
+    @ObservedObject var locationManager = LocationManager()
         
     var body: some View {
         NavigationView {
@@ -74,13 +71,14 @@ struct WeatherView: View {
                         && !(self.model.weatherDataHasBeenRequestedBefore) {
                         model.featchWeatherData(lat: loc?.coordinate.latitude ?? 0.0,
                                                 long: loc?.coordinate.longitude ?? 0.0)
+                    } else {
+                        print("Location status unsupported")
                     }
                     
             }
             
         } // :Navigation View
         .navigationViewStyle(.stack)
-        .fullScreenCover(isPresented: $mapIsPresented, content: MapView.init)
         
     }
 }
