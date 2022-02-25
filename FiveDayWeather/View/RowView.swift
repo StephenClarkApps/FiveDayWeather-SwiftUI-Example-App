@@ -23,7 +23,7 @@ struct RowView: View {
         HStack {
             VStack {
                 Text(weatherForecastItem.dayDateText).bold().multilineTextAlignment(.center)
-            }
+            }.frame(width: 60)
             
             ScrollView (.horizontal, showsIndicators: false) {
                 HStack {

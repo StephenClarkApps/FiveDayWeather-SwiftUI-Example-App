@@ -20,10 +20,9 @@ struct MapView: View {
     var body: some View {
         NavigationView {
             VStack {
-                Map(coordinateRegion: $region, showsUserLocation: true, userTrackingMode: .constant(.follow))
-            }
-            .navigationBarTitle(Text("Map"))
-        }
+                Map(coordinateRegion: $region, showsUserLocation: true, userTrackingMode: .constant(.follow)).frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height, alignment: .center)
+            }.navigationBarTitle(Text("Map"))
+        }.navigationViewStyle(.stack)
     }
 }
 

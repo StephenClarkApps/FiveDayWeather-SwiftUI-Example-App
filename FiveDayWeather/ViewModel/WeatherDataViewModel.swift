@@ -48,7 +48,7 @@ class WeatherDataViewModel: ObservableObject {
             strongSelf.cityName = weatherContainer.city.name
             strongSelf.weatherForecastsList = weatherContainer.weatherForecastsList.map { ForecastForGivenDayAndTimeViewModel($0) }
             
-            // I'll use these "temporary" parameters to covert to a day based model
+            // I'll use these "temporary" parameters to convert to a day based view model
             var temporaryDateString = ""
             var temporaryForecastForParticularDayViewModel =  ForecastForParticularDayViewModel(dayDateText: "", arrayOfTimeBasedForecasts: [])
             
