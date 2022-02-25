@@ -10,7 +10,7 @@ import Foundation
 
 class WeatherDataViewModel: ObservableObject {
     
-    private let weatherDataService = WeatherDataService()
+    private var weatherDataService: WeatherFetchingService
     
     var cancellable: AnyCancellable?
     
@@ -20,7 +20,14 @@ class WeatherDataViewModel: ObservableObject {
     @Published var weatherForecastsList: [ForecastForGivenDayAndTimeViewModel] = []
     @Published var forecastsForOneDay: [ForecastForParticularDayViewModel] = []
     
-    func featchWeatherData(lat: Double, long: Double) {
+    @Published var requestSucceded: Bool = true
+    
+    // Inject the fetching service at creation of view model
+    required init(weatherDataService: WeatherFetchingService) {
+        self.weatherDataService = weatherDataService
+    }
+    
+    func fetchWeatherData(lat: Double, long: Double) {
         
         self.weatherDataHasBeenRequestedBefore = true
         // Reset paremeters prior to reloading data
@@ -31,10 +38,10 @@ class WeatherDataViewModel: ObservableObject {
         cancellable = weatherDataService.fetchFiveDayWeather(lat: lat, long: long).sink(receiveCompletion: { [weak self] completion in
             switch completion {
             case .finished:
-                print("Successfully got data.")
-                
+                self?.requestSucceded = true
             case .failure(let error):
                 print(error)
+                self?.requestSucceded = false
             }
         }, receiveValue: { [weak self] weatherContainer in
             guard let strongSelf = self else { return }
@@ -68,76 +75,4 @@ class WeatherDataViewModel: ObservableObject {
             
         })
     }
-}
-
-struct ForecastForGivenDayAndTimeViewModel: Codable, Hashable {
-    
-    private let forecastForGivenDayAndTime: ForecastForGivenDayAndTime
-    
-    init(_ forecastForGivenDayAndTime: ForecastForGivenDayAndTime) {
-        self.forecastForGivenDayAndTime = forecastForGivenDayAndTime
-    }
-    
-    var dtTxt: String {
-        return forecastForGivenDayAndTime.dtTxt
-    }
-    
-    // We're interested in displaying results in a horizontal scroll view which come from
-    // the same day of the week so we can group results by this parameter.
-    var dateText: String {
-        
-        let date = Date(timeIntervalSince1970: Double(forecastForGivenDayAndTime.dt))
-        let dateFormatter = DateFormatter()
-        dateFormatter.timeStyle = DateFormatter.Style.none //Set time style
-        dateFormatter.dateFormat = "E\nd MMM"
-        dateFormatter.timeZone = .current
-        return dateFormatter.string(from: date)
-    }
-    
-    /// Return a time text such as 9 AM, 9 PM for a given hourly forecast
-    var timeText: String {
-        let date = Date(timeIntervalSince1970: Double(forecastForGivenDayAndTime.dt))
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "h a"
-        dateFormatter.amSymbol = "AM"
-        dateFormatter.pmSymbol = "PM"
-        dateFormatter.timeZone = .current
-        return dateFormatter.string(from: date)
-    }
-    
-    // in the case of our json, the weather array always has just one item with id, main, description, icon as parameters
-    var conditions: String {
-        return forecastForGivenDayAndTime.weather.first?.main.rawValue ?? ""
-    }
-    
-    // Description of the weather conditions
-    var conditionsDescription: String {
-        return forecastForGivenDayAndTime.weather.first?.weatherDescription ?? ""
-    }
-    
-    // A string corresponsing with the icon which is suggested to be used to depict the conditions
-    var iconString: String {
-        return forecastForGivenDayAndTime.weather.first?.icon ?? ""
-    }
-    
-    var temperatureInCelciusString: String {
-        return String(Int(forecastForGivenDayAndTime.main.temp.rounded())) + " ℃"
-    }
-}
-
-// Because our view is going to be list of horizontally scrollable element with one
-// row for each day, we'll need a view model that combines the hours for each day,
-// into something that's ready to be displayed in rows.
-struct ForecastForParticularDayViewModel: Codable, Hashable {
-    
-    var uuid: UUID
-    var dayDateText: String = "" // i.e. "Wed\n23rd Feb"
-    var arrayOfTimeBasedForecasts: [ForecastForGivenDayAndTimeViewModel]
-    
-    init(dayDateText: String, arrayOfTimeBasedForecasts: [ForecastForGivenDayAndTimeViewModel]) {
-        self.uuid = UUID() // Helps with default hashable in this case
-        self.dayDateText = dayDateText
-        self.arrayOfTimeBasedForecasts = arrayOfTimeBasedForecasts
-    }
-    
 }

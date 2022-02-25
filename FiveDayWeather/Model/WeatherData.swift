@@ -103,9 +103,9 @@ struct MainClass: Codable, Hashable {
     let tempMin: Double
     let tempMax: Double
     let pressure: Int // Atmospheric pressure on the sea level by default, hPa
-    let seaLevel: Int // Atmospheric pressure on the sea level, hPa
-    let grndLevel: Int //  Atmospheric pressure on the ground level, hPa
-    let humidity: Int // Humidity, %
+    let seaLevelPressure: Int
+    let groundLevelPressure: Int
+    let humidityPercentage: Int
     let tempKf: Double //  Internal parameter
 
     enum CodingKeys: String, CodingKey {
@@ -114,9 +114,9 @@ struct MainClass: Codable, Hashable {
         case tempMin = "temp_min"
         case tempMax = "temp_max"
         case pressure = "pressure"
-        case seaLevel = "sea_level"
-        case grndLevel = "grnd_level"
-        case humidity = "humidity"
+        case seaLevelPressure = "sea_level"
+        case groundLevelPressure = "grnd_level"
+        case humidityPercentage = "humidity"
         case tempKf = "temp_kf"
     }
 }
@@ -139,6 +139,7 @@ struct Sys: Codable, Hashable {
     }
 }
 
+// MARK: - PartOfDay
 enum PartOfDay: String, Codable, Hashable {
     case day = "d"
     case night = "n"
@@ -161,6 +162,7 @@ struct Weather: Codable, Hashable {
 }
 
 // https://openweathermap.org/weather-conditions#Weather-Condition-Codes-2
+// MARK: - MainConditionsEnum
 enum MainConditionsEnum: String, Codable, Hashable {
     case thunderstorm = "Thunderstorm" 
     case drizzle = "Drizzle"

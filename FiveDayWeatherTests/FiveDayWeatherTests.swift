@@ -19,8 +19,34 @@ class FiveDayWeatherTests: XCTestCase {
     override func tearDownWithError() throws {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
+    
+    // MARK: - Networking and API
+    
+    func testGettingWeatherFromAPI() throws {
 
-    func testDecodingWeatherFromJson() throws {
+        let expectation = XCTestExpectation(description: "Get weather data from test api call")
+        let observer: AnyCancellable?
+        var weatherDataService: WeatherFetchingService = WeatherDataService()
+        
+        observer = weatherDataService.fetchFiveDayWeather(lat: 55.8642, long: -4.2518).sink(receiveCompletion: { completion in
+            switch completion {
+            case .finished:
+                print("Success")
+                expectation.fulfill()
+            case .failure(let error):
+                print(error)
+            }
+        }, receiveValue: { weatherContainer in
+
+        })
+
+        
+        wait(for: [expectation], timeout: 10.0)
+    }
+    
+    // MARK: - Decoding Data
+
+    func test_DecodingRootCodableObjectFromJson() throws {
 
         // GIVEN
         guard let jsonData = readLocalFile(forName: "TestWeather") else { XCTFail("Can't read local json file"); return }
@@ -32,28 +58,6 @@ class FiveDayWeatherTests: XCTestCase {
         XCTAssertTrue(weatherData?.weatherForecastsList[1].sys.partOfDay == .night)
         XCTAssertTrue(weatherData?.weatherForecastsList[0].main.temp == 9.07)
          
-    }
-    
-    func testGettingWeatherFromAPI() throws {
-        
-        let expectation = XCTestExpectation(description: "Get weather data from test api call")
-
-        var observer: AnyCancellable?
-        
-        observer = APICaller.sharedInstance.fetchWeather().sink(receiveCompletion: { completion in
-            switch completion {
-            case .finished:
-                print("fishished")
-            case .failure(let error):
-                print(error)
-            }
-        }, receiveValue: { [weak self] value in
-            XCTAssertNotNil(value.city.name)
-            print(value.city.name)
-            expectation.fulfill()
-        })
-        
-        wait(for: [expectation], timeout: 10.0)
     }
     
     func testForecastForGivenDayAndTimeViewModel() throws {

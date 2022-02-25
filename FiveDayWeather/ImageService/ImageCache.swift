@@ -12,10 +12,13 @@ protocol ImageCache {
 }
 
 struct TemporaryImageCache: ImageCache {
+    
+    // Using NSCache can still be a good option when we are not using a caching framework
+    
     private let cache: NSCache<NSURL, UIImage> = {
         let cache = NSCache<NSURL, UIImage>()
-        cache.countLimit = 100                    // number of items to retain
-        cache.totalCostLimit = 1024 * 1024 * 100  // Size constraint 100 MB
+        cache.countLimit = 100                    // Maximum number of items to retain
+        cache.totalCostLimit = 1024 * 1024 * 120  // Size constraint 120 MB
         return cache
     }()
     

@@ -11,17 +11,17 @@ import UIKit
 class ImageLoader: ObservableObject {
     @Published var image: UIImage?
     
-    private(set) var isLoading = false
+    private(set) var imageIsLoading = false
     
     private let url: URL
-    private var cache: ImageCache?
+    private var imageCache: ImageCache?
     private var cancellable: AnyCancellable?
     
     private static let imageProcessingQueue = DispatchQueue(label: "image-processing")
     
     init(url: URL, cache: ImageCache? = nil) {
         self.url = url
-        self.cache = cache
+        self.imageCache = cache
     }
     
     deinit {
@@ -29,9 +29,11 @@ class ImageLoader: ObservableObject {
     }
     
     func load() {
-        guard !isLoading else { return }
+        guard !imageIsLoading else { return }
 
-        if let image = cache?[url] {
+        // If we already have an image stored in our image cache for a particular URL
+        // then we get the image from there instead of requesting it again.
+        if let image = imageCache?[url] {
             self.image = image
             return
         }
@@ -39,28 +41,38 @@ class ImageLoader: ObservableObject {
         cancellable = URLSession.shared.dataTaskPublisher(for: url)
             .map { UIImage(data: $0.data) }
             .replaceError(with: nil)
-            .handleEvents(receiveSubscription: { [weak self] _ in self?.onStart() },
-                          receiveOutput: { [weak self] in self?.cache($0) },
-                          receiveCompletion: { [weak self] _ in self?.onFinish() },
-                          receiveCancel: { [weak self] in self?.onFinish() })
+            .handleEvents(receiveSubscription: { [weak self] _ in
+                self?.imageHasStartedLoading()
+            },
+                          receiveOutput: { [weak self] in
+                self?.cache($0)
+            },
+                          receiveCompletion: { [weak self] _ in
+                self?.imageHasFinishedLoading()
+            },
+                          receiveCancel: { [weak self] in
+                self?.imageHasFinishedLoading()
+            })
             .subscribe(on: Self.imageProcessingQueue)
             .receive(on: DispatchQueue.main)
-            .sink { [weak self] in self?.image = $0 }
+            .sink { [weak self] in
+                self?.image = $0
+            }
     }
     
     func cancel() {
         cancellable?.cancel()
     }
     
-    private func onStart() {
-        isLoading = true
+    private func imageHasStartedLoading() {
+        imageIsLoading = true
     }
     
-    private func onFinish() {
-        isLoading = false
+    private func imageHasFinishedLoading() {
+        imageIsLoading = false
     }
     
     private func cache(_ image: UIImage?) {
-        image.map { cache?[url] = $0 }
+        image.map { imageCache?[url] = $0 }
     }
 }

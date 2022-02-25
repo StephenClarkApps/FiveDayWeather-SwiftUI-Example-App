@@ -6,8 +6,11 @@
 //
 
 import UIKit
-
 import Foundation
+
+// To demostrate a mixture of approaches combining UIKit with SwiftUI
+// this is an apperance Proxy class which taps into the appearance of
+// the UIKit object which SwiftUI uses under the hood.
 
 class FDAppearance {
 

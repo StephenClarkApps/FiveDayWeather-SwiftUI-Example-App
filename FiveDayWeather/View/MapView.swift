@@ -11,10 +11,12 @@ import SwiftUI
 
 struct MapView: View {
     
+    // MARK: - PROPERTIES
     // Region should update to match users location (due to our use of tracking mode below), when location is enabled
     @State private var region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 51.507222, longitude: -0.1275),
                                                    span: MKCoordinateSpan(latitudeDelta: 0.5, longitudeDelta: 0.5))
     
+    // MARK: - BODY
     var body: some View {
         NavigationView {
             VStack {
@@ -22,5 +24,12 @@ struct MapView: View {
             }
             .navigationBarTitle(Text("Map"))
         }
+    }
+}
+
+// MARK: - PREVIEW
+struct MapView_Previews: PreviewProvider {
+    static var previews: some View {
+        MapView()
     }
 }
