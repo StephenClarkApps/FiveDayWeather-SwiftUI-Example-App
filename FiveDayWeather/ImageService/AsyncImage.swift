@@ -6,34 +6,28 @@
 //
 
 import SwiftUI
+import Nuke
+import FetchImage
 
-struct AsyncImage<Placeholder: View>: View {
-    
-    // MARK: - Properties
-    @StateObject private var loader: ImageLoader
-    private let placeholder: Placeholder
-    private let image: (UIImage) -> Image
-    
-    // MARK: - Init, Body and Content
-    init(url: URL, @ViewBuilder placeholder: () -> Placeholder, @ViewBuilder image: @escaping (UIImage) -> Image = Image.init(uiImage:)) {
-        
-        self.placeholder = placeholder()
-        self.image = image
-        _loader = StateObject(wrappedValue: ImageLoader(url: url, cache: Environment(\.imageCache).wrappedValue))
-    }
-    
-    var body: some View {
-        content
-            .onAppear(perform: loader.load)
-    }
-    
-    private var content: some View {
-        Group {
-            if loader.image != nil {
-                image(loader.image!)
-            } else {
-                placeholder
-            }
+public struct ImageView: View {
+    @ObservedObject var image: FetchImage
+
+    public var body: some View {
+        ZStack {
+            let url = URL(string: "https://cloud.githubusercontent.com/assets/1567433/9781817/ecb16e82-57a0-11e5-9b43-6b4f52659997.jpg")!
+            ImageView(image: FetchImage(url: url))
+                .frame(width: 80, height: 80)
+                .clipped()
         }
+
     }
 }
+
+//struct ImageView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        let url = URL(string: "https://cloud.githubusercontent.com/assets/1567433/9781817/ecb16e82-57a0-11e5-9b43-6b4f52659997.jpg")!
+//        ImageView( simage: FetchImage(url: url))
+//            .frame(width: 80, height: 80)
+//            .clipped()
+//    }
+//}

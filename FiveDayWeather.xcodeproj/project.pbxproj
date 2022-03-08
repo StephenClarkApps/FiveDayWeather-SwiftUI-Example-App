@@ -36,6 +36,8 @@
 		86C90E9027C6CB0200A35FCE /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86C90E8F27C6CB0200A35FCE /* MapView.swift */; };
 		86C90E9227C6D20900A35FCE /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86C90E9127C6D20900A35FCE /* ContentView.swift */; };
 		86C90E9427C6EA1F00A35FCE /* FDApperance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86C90E9327C6EA1F00A35FCE /* FDApperance.swift */; };
+		86D9046127D7FD4200E11B83 /* Nuke in Frameworks */ = {isa = PBXBuildFile; productRef = 86D9046027D7FD4200E11B83 /* Nuke */; };
+		86D9046427D7FECF00E11B83 /* FetchImage in Frameworks */ = {isa = PBXBuildFile; productRef = 86D9046327D7FECF00E11B83 /* FetchImage */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -95,6 +97,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				86D9046127D7FD4200E11B83 /* Nuke in Frameworks */,
+				86D9046427D7FECF00E11B83 /* FetchImage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -281,6 +285,10 @@
 			dependencies = (
 			);
 			name = FiveDayWeather;
+			packageProductDependencies = (
+				86D9046027D7FD4200E11B83 /* Nuke */,
+				86D9046327D7FECF00E11B83 /* FetchImage */,
+			);
 			productName = FiveDayWeather;
 			productReference = 86B1907B27C3A5FF00860339 /* FiveDayWeather.app */;
 			productType = "com.apple.product-type.application";
@@ -353,6 +361,10 @@
 				Base,
 			);
 			mainGroup = 86B1907227C3A5FF00860339;
+			packageReferences = (
+				86D9045F27D7FD4200E11B83 /* XCRemoteSwiftPackageReference "Nuke" */,
+				86D9046227D7FECF00E11B83 /* XCRemoteSwiftPackageReference "FetchImage" */,
+			);
 			productRefGroup = 86B1907C27C3A5FF00860339 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -743,6 +755,38 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		86D9045F27D7FD4200E11B83 /* XCRemoteSwiftPackageReference "Nuke" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/kean/Nuke.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 9.0.0;
+			};
+		};
+		86D9046227D7FECF00E11B83 /* XCRemoteSwiftPackageReference "FetchImage" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/kean/FetchImage";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.4.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		86D9046027D7FD4200E11B83 /* Nuke */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 86D9045F27D7FD4200E11B83 /* XCRemoteSwiftPackageReference "Nuke" */;
+			productName = Nuke;
+		};
+		86D9046327D7FECF00E11B83 /* FetchImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 86D9046227D7FECF00E11B83 /* XCRemoteSwiftPackageReference "FetchImage" */;
+			productName = FetchImage;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 86B1907327C3A5FF00860339 /* Project object */;
 }
