@@ -31,7 +31,10 @@ struct RowView: View {
                         VStack {
                             Text(forecast.timeText).modifier(CellTextModifier())
                             
-                            ImageView(url: URL(string: Constants.RemoteImages.imagesPath + forecast.iconString + Constants.RemoteImages.imagesSuffix)!)
+//                            ImageView(url: URL(string: Constants.RemoteImages.imagesPath + forecast.iconString + Constants.RemoteImages.imagesSuffix)!)
+                            
+                           AsyncImage(url: URL(string: Constants.RemoteImages.imagesPath + forecast.iconString + Constants.RemoteImages.imagesSuffix)!,
+                                      placeholder: {  ProgressView() })
 //                            AsyncImage(
 //                                url: URL(string: Constants.RemoteImages.imagesPath + forecast.iconString + Constants.RemoteImages.imagesSuffix)!,
 //                                placeholder: {  ProgressView() },
