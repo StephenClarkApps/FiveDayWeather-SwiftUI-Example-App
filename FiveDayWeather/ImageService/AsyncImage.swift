@@ -9,25 +9,21 @@ import SwiftUI
 import Nuke
 import FetchImage
 
-public struct ImageView: View {
-    @ObservedObject var image: FetchImage
+struct ImageView: View {
+    let url: URL
 
-    public var body: some View {
+    @StateObject private var image = FetchImage()
+
+    var body: some View {
         ZStack {
-            let url = URL(string: "https://cloud.githubusercontent.com/assets/1567433/9781817/ecb16e82-57a0-11e5-9b43-6b4f52659997.jpg")!
-            ImageView(image: FetchImage(url: url))
-                .frame(width: 80, height: 80)
+           // Rectangle().fill(Color.gray)
+            image.view?
+                .resizable()
+                .aspectRatio(contentMode: .fill)
                 .clipped()
         }
-
+        .onAppear { image.load(url) }
+        .onChange(of: url) { image.load($0) }
+        .onDisappear(perform: image.reset)
     }
 }
-
-//struct ImageView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        let url = URL(string: "https://cloud.githubusercontent.com/assets/1567433/9781817/ecb16e82-57a0-11e5-9b43-6b4f52659997.jpg")!
-//        ImageView( simage: FetchImage(url: url))
-//            .frame(width: 80, height: 80)
-//            .clipped()
-//    }
-//}

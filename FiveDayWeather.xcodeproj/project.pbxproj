@@ -27,9 +27,6 @@
 		86B190AE27C3B7CD00860339 /* WeatherDataViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86B190AD27C3B7CD00860339 /* WeatherDataViewModel.swift */; };
 		86B190AF27C3D26100860339 /* TestWeather.json in Resources */ = {isa = PBXBuildFile; fileRef = 86B190AB27C3B62300860339 /* TestWeather.json */; };
 		86B190B427C546C800860339 /* WeatherDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86B190B327C546C800860339 /* WeatherDataService.swift */; };
-		86C90E8527C65C6700A35FCE /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86C90E8227C65C6700A35FCE /* ImageLoader.swift */; };
-		86C90E8627C65C6700A35FCE /* EnvironmentValues+ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86C90E8327C65C6700A35FCE /* EnvironmentValues+ImageCache.swift */; };
-		86C90E8727C65C6700A35FCE /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86C90E8427C65C6700A35FCE /* ImageCache.swift */; };
 		86C90E8927C65C7000A35FCE /* AsyncImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86C90E8827C65C7000A35FCE /* AsyncImage.swift */; };
 		86C90E8B27C665A700A35FCE /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86C90E8A27C665A700A35FCE /* Constants.swift */; };
 		86C90E8D27C6815700A35FCE /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86C90E8C27C6815700A35FCE /* LocationManager.swift */; };
@@ -81,9 +78,6 @@
 		86B190AB27C3B62300860339 /* TestWeather.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = TestWeather.json; sourceTree = "<group>"; };
 		86B190AD27C3B7CD00860339 /* WeatherDataViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherDataViewModel.swift; sourceTree = "<group>"; };
 		86B190B327C546C800860339 /* WeatherDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherDataService.swift; sourceTree = "<group>"; };
-		86C90E8227C65C6700A35FCE /* ImageLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
-		86C90E8327C65C6700A35FCE /* EnvironmentValues+ImageCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "EnvironmentValues+ImageCache.swift"; sourceTree = "<group>"; };
-		86C90E8427C65C6700A35FCE /* ImageCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
 		86C90E8827C65C7000A35FCE /* AsyncImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AsyncImage.swift; sourceTree = "<group>"; };
 		86C90E8A27C665A700A35FCE /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		86C90E8C27C6815700A35FCE /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
@@ -243,9 +237,6 @@
 			isa = PBXGroup;
 			children = (
 				86C90E8827C65C7000A35FCE /* AsyncImage.swift */,
-				86C90E8327C65C6700A35FCE /* EnvironmentValues+ImageCache.swift */,
-				86C90E8427C65C6700A35FCE /* ImageCache.swift */,
-				86C90E8227C65C6700A35FCE /* ImageLoader.swift */,
 			);
 			path = ImageService;
 			sourceTree = "<group>";
@@ -413,15 +404,12 @@
 				86890AE227C8449700B26E46 /* ForecastForParticularDayViewModel.swift in Sources */,
 				86890AE027C8445400B26E46 /* ForecastForGivenDayAndTimeViewModel.swift in Sources */,
 				86C90E8B27C665A700A35FCE /* Constants.swift in Sources */,
-				86C90E8527C65C6700A35FCE /* ImageLoader.swift in Sources */,
 				86890AD727C8245000B26E46 /* Data+FDW.swift in Sources */,
 				86B1908127C3A5FF00860339 /* WeatherView.swift in Sources */,
 				86C90E9027C6CB0200A35FCE /* MapView.swift in Sources */,
 				86B190AA27C3B11B00860339 /* WeatherData.swift in Sources */,
-				86C90E8727C65C6700A35FCE /* ImageCache.swift in Sources */,
 				86C90E9227C6D20900A35FCE /* ContentView.swift in Sources */,
 				86B1907F27C3A5FF00860339 /* FiveDayWeatherApp.swift in Sources */,
-				86C90E8627C65C6700A35FCE /* EnvironmentValues+ImageCache.swift in Sources */,
 				86890ADC27C834A800B26E46 /* OutlineModifier.swift in Sources */,
 				86C90E8D27C6815700A35FCE /* LocationManager.swift in Sources */,
 				86890ADE27C834CB00B26E46 /* CellTextModifier.swift in Sources */,
