@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "91DA74BF-D3A3-4FA0-8278-879D237C0D8A"
+   type = "1"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "1B7D73D0-48D0-406A-A7C2-95FC2C6EDEF6"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "FiveDayWeatherTests/FiveDayWeatherTests.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "34"
+            endingLineNumber = "34"
+            landmarkName = "testGettingWeatherFromAPI()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "D2E6B75D-A56F-445C-AA14-AC3C5F66266D"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "FiveDayWeatherTests/FiveDayWeatherTests.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "37"
+            endingLineNumber = "37"
+            landmarkName = "testGettingWeatherFromAPI()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "3A81AD2F-8230-4815-8466-C0816C37F8DC"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "FiveDayWeatherTests/FiveDayWeatherTests.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "30"
+            endingLineNumber = "30"
+            landmarkName = "testGettingWeatherFromAPI()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "3A81AD2F-8230-4815-8466-C0816C37F8DC - bb518a2137db597f"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "FiveDayWeatherTests.FiveDayWeatherTests.testGettingWeatherFromAPI() throws -&gt; ()"
+                  moduleName = "FiveDayWeatherTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/stephenclark/Documents/PythonCode/FiveDayWeather-SwiftUI-Example-App/FiveDayWeatherTests/FiveDayWeatherTests.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "31"
+                  endingLineNumber = "31"
+                  offsetFromSymbolStart = "232">
+               </Location>
+               <Location
+                  uuid = "3A81AD2F-8230-4815-8466-C0816C37F8DC - ba0181cb3cead795"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Combine.Subscribers.Completion&lt;Swift.Error&gt;) -&gt; () in FiveDayWeatherTests.FiveDayWeatherTests.testGettingWeatherFromAPI() throws -&gt; ()"
+                  moduleName = "FiveDayWeatherTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/stephenclark/Documents/PythonCode/FiveDayWeather-SwiftUI-Example-App/FiveDayWeatherTests/FiveDayWeatherTests.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "31"
+                  endingLineNumber = "31"
+                  offsetFromSymbolStart = "76">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>

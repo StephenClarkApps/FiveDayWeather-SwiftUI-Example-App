@@ -65,7 +65,7 @@ struct ForecastForGivenDayAndTime: Codable, Hashable {
     let weather: [Weather]
     let clouds: Clouds
     let wind: Wind
-    let visibility: Int
+    let visibility: Int? // optional as we sometimes don't seem to get this?
     let pop: Double
     let snow: Rain?
     let sys: Sys
