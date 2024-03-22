@@ -7,27 +7,21 @@
 
 import Nuke
 import SwiftUI
-import FetchImage
 
 struct AsyncImage<Placeholder: View>: View {
-    
     let url: URL
-    
     private let placeholder: Placeholder
-    
-    @StateObject private var image = FetchImage()
-    
+    @State private var uiImage: UIImage? = nil
+
     init(url: URL, @ViewBuilder placeholder: () -> Placeholder) {
-        
         self.placeholder = placeholder()
         self.url = url
     }
-    
+
     var body: some View {
-        
         ZStack {
-            if (image.view != nil) {
-                image.view?
+            if let image = uiImage {
+                Image(uiImage: image)
                     .resizable()
                     .aspectRatio(contentMode: .fill)
                     .clipped()
@@ -35,8 +29,17 @@ struct AsyncImage<Placeholder: View>: View {
                 placeholder
             }
         }
-        .onAppear { image.load(url) }
-        .onChange(of: url) { image.load($0) }
-        .onDisappear(perform: image.reset)
+        .onAppear { load(url) }
+        .onChange(of: url) { load($0) }
+    }
+
+    private func load(_ url: URL) {
+        ImagePipeline.shared.loadImage(with: url) { result in
+            if case let .success(response) = result {
+                DispatchQueue.main.async {
+                    self.uiImage = response.image
+                }
+            }
+        }
     }
 }
