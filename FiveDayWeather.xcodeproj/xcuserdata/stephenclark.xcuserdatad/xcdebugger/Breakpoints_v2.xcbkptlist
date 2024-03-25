@@ -84,5 +84,101 @@
             </Locations>
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "E3B839CC-1883-40FE-9FD0-5DD441A9FE6D"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "FiveDayWeather/View/WeatherView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "83"
+            endingLineNumber = "83"
+            landmarkName = "body"
+            landmarkType = "24">
+            <Locations>
+               <Location
+                  uuid = "E3B839CC-1883-40FE-9FD0-5DD441A9FE6D - 6e258ed85f5e0502"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #6 (Swift.Bool) -&gt; () in closure #1 () -&gt; SwiftUI._ConditionalContent&lt;SwiftUI.ProgressView&lt;SwiftUI.EmptyView, SwiftUI.EmptyView&gt;, &lt;&lt;opaque return type of SwiftUI.View.onChange&lt;&#x3c4;_0_0 where &#x3c4;_1_0: Swift.Equatable&gt;(of: &#x3c4;_1_0, perform: (&#x3c4;_1_0) -&gt; ()) -&gt; some&gt;&gt;.0&gt; in FiveDayWeather.WeatherView.body.getter : some"
+                  moduleName = "FiveDayWeather"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/stephenclark/Documents/PythonCode/FiveDayWeather-SwiftUI-Example-App/FiveDayWeather/View/WeatherView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "83"
+                  endingLineNumber = "83"
+                  offsetFromSymbolStart = "84">
+               </Location>
+               <Location
+                  uuid = "E3B839CC-1883-40FE-9FD0-5DD441A9FE6D - 8da630c67a96af01"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #5 (Swift.Bool) -&gt; () in closure #1 () -&gt; SwiftUI._ConditionalContent&lt;SwiftUI.ProgressView&lt;SwiftUI.EmptyView, SwiftUI.EmptyView&gt;, &lt;&lt;opaque return type of SwiftUI.View.onChange&lt;&#x3c4;_0_0 where &#x3c4;_1_0: Swift.Equatable&gt;(of: &#x3c4;_1_0, perform: (&#x3c4;_1_0) -&gt; ()) -&gt; some&gt;&gt;.0&gt; in FiveDayWeather.WeatherView.body.getter : some"
+                  moduleName = "FiveDayWeather"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/stephenclark/Documents/PythonCode/FiveDayWeather-SwiftUI-Example-App/FiveDayWeather/View/WeatherView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "83"
+                  endingLineNumber = "83"
+                  offsetFromSymbolStart = "84">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "9733CE40-D9D9-4889-8CCB-079DDBBF14F9"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "FiveDayWeather/View/WeatherView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "101"
+            endingLineNumber = "101"
+            landmarkName = "body"
+            landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "1D33E683-41FA-4EF1-8D57-BBF722DAF399"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "FiveDayWeather/View/WeatherView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "95"
+            endingLineNumber = "95"
+            landmarkName = "body"
+            landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "E76123C3-8EDB-4010-B44B-A955CA1CAC88"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "FiveDayWeather/View/WeatherView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "104"
+            endingLineNumber = "104"
+            landmarkName = "body"
+            landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>

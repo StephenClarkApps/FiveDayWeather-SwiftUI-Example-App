@@ -48,7 +48,7 @@ class FDAppearance {
         }
         
         appearance.barStyle = .black
-        appearance.isTranslucent = false
+       // appearance.isTranslucent = false
     }
     
     static func setupNavigationBar() {
